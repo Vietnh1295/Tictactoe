@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="display()">
+<p id="caro"></p>
+<input type="button" style="margin-left: 70px" value="change value" onclick="chanvalue()">
+<script>
+    var board=[];
+    var luotCuaX;
+    for(var i=0;i<10;i++)
+    {
+        board[i]=['&nbsp;&nbsp;.','&nbsp;&nbsp;.','&nbsp;&nbsp;.','&nbsp;&nbsp;.','&nbsp;&nbsp;.','&nbsp;&nbsp;.','&nbsp;&nbsp;.','&nbsp;&nbsp;.','&nbsp;&nbsp;.','&nbsp;&nbsp;.'];
+    }
+    function display()
+    {
+        var table = '<table border=" 1px">';
+        for (var i = 0; i < 10; i++) {
+            table += '<tr style="width: 20px;height: 20px">';
+            for (var j = 0; j < 10; j++) {
+                table += '<td style="width: 20px;height: 20px">' + board[i][j] + '</td>';
+            }
+            table += '</tr>';
+        }
+        table += '</table>';
+        document.getElementById('caro').innerHTML = table;
+    }
+    function WinOrLose() {
+        var resX=[];
+        var resO=[];
+        for (var i = 0; i < 10; i++)
+        {
+            for (var j = 0; j < 10; j++)
+            {
+                if (board[i][j]=='&nbsp;&nbsp;X')
+                {
+                    resX.push(parseInt(i+''+j));
+                }
+                else if(board[i][j]=='&nbsp;&nbsp;O')
+                {
+                    resO.push(parseInt(i+''+j));
+                }
+            }
+        }
+
+        for(var i=0;i<resX.length;i++)
+        {
+
+            for(var j=0;j<resX.length;j++)
+            {
+
+
+                if(resX[i]-resX[j]==11)
+                {
+                    for(var a=0;a<resX.length;a++)
+                    {
+                        if(resX[j]-resX[a]==11)
+                        {
+                            alert('X đã tháng');
+                            break;
+                        }
+                    }}
+
+
+                else
+                if(resX[i]-resX[j]==10)
+                {
+                    for(var a=0;a<resX.length;a++)
+                    {
+                        if(resX[j]-resX[a]==10)
+                        {
+                            alert('X đã tháng');
+                            break;
+                        }}
+                }
+                else
+                if(resX[i]-resX[j]==1)
+                {
+                    for(var a=0;a<resX.length;a++)
+                    {
+                        if(resX[j]-resX[a]==1)
+                        {
+                            alert('X đã tháng');
+                            break;
+                        }}
+                }
+                else
+                if(resX[i]-resX[j]==9)
+                {
+                    for(var a=0;a<resX.length;a++)
+                    {
+                        if(resX[j]-resX[a]==9)
+                        {
+                            alert('X đã tháng');
+                            break;
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+        for(var i=0;i<resO.length;i++)
+        {
+
+            for(var j=0;j<resO.length;j++)
+            {
+
+
+                if(resO[i]-resO[j]==11)
+                {
+                    for(var a=0;a<resO.length;a++)
+                    {
+                        if(resO[j]-resO[a]==11)
+                        {
+                            alert('O đã tháng');
+                            break;
+                            break;
+                        }
+                    }}
+
+
+                else
+                if(resO[i]-resO[j]==10)
+                {
+                    for(var a=0;a<resO.length;a++)
+                    {
+                    if(resO[j]-resO[a]==10)
+                    {
+                        alert('O đã tháng');
+                            break;
+                    }}
+                }
+                else
+                if(resO[i]-resO[j]==1)
+                {
+                    for(var a=0;a<resO.length;a++)
+                    {
+                    if(resO[j]-resO[a]==1)
+                    {
+                        alert('O đã tháng');
+                            break;
+                    }}
+                }
+                else
+                if(resO[i]-resO[j]==9)
+                {
+                    for(var a=0;a<resO.length;a++)
+                    {
+                    if(resO[j]-resO[a]==9)
+                    {
+                        alert('O đã tháng');
+                            break;
+                    }
+                }
+
+            }
+
+        }
+
+    }}
+    function chanvalue()
+    {
+        var x=prompt('nhập vị trí X=');
+        var y=prompt('nhập vị trí Y=');
+
+        if (luotCuaX)
+        {
+            board[x][y] = '&nbsp;&nbsp;X';
+            luotCuaX=false;
+        }
+        else
+            {
+                board[x][y] = '&nbsp;&nbsp;O';
+                luotCuaX=true;
+            }
+        display();
+        WinOrLose();
+    }
+</script>
+</body>
+</html>
